@@ -11,7 +11,6 @@ public class Main {
         ArrayList<Ejercicio> ejerciciosDisponibles = new ArrayList<>();
         leerAlimentosDisponibles(alimentosDisponibles);
         leerEjerciciosDisponibles(ejerciciosDisponibles);
-
     }
 
     public static void leerAlimentosDisponibles(ArrayList<Alimento> alimentos) throws FileNotFoundException {
