@@ -7,14 +7,16 @@ public class Usuario {
     private Date fechaNacimiento;
     private Date fechaIngreso;
     private int edad;
+    private EstadoFisico estadoFisico;
 
     //builder
-    public Usuario(String nombre, String rut, Date fechaNacimiento, Date fechaIngreso, int edad) {
+    public Usuario(String nombre, String rut, Date fechaNacimiento, Date fechaIngreso, int edad, EstadoFisico estadoFisico) {
         this.nombre = nombre;
         this.rut = rut;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaIngreso = fechaIngreso;
         this.edad = edad;
+        this.estadoFisico = estadoFisico;
     }
 
     //getters
@@ -38,6 +40,10 @@ public class Usuario {
         return this.edad;
     }
 
+    public EstadoFisico getEstadoFisico() {
+        return this.estadoFisico;
+    }
+
     //setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -57,5 +63,9 @@ public class Usuario {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public void setEstadoFisico(EstadoFisico estadoFisico) {
+        this.estadoFisico = estadoFisico;
     }
 }

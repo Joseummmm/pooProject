@@ -20,7 +20,6 @@ public class Main {
 
         Dieta dieta = new Dieta(alimentos);
 
-
         Ejercicio burpees = new Ejercicio("Burpees", 10,60,14.3f);
         Ejercicio flexiones = new Ejercicio("Flexiones", 12, 40, 8);
         Ejercicio sentadillas = new Ejercicio("Sentadillas", 10, 30, 9.8f);
@@ -33,12 +32,12 @@ public class Main {
         ejercicios.add(abdominales);
 
         Rutina rutina = new Rutina(ejercicios, 5);
-
-        Date fechaNacimiento = new Date(2013,1,23);
-        Date fechaIngreso = new Date(2022,8,31);
-
+        /*Date fechaNacimiento = new Date(2013,1,23);
+        Date fechaIngreso = new Date(2022,8,31);*/
+        /*
         Usuario usuario = new Usuario("Jose Urbina","43.567.234-4", fechaNacimiento,fechaIngreso,10);
         EstadoFisico estadoFisicoActual = new EstadoFisico(23.8f,1.32f,90.6f);
+        */
     }
 }
 

@@ -7,10 +7,10 @@ public class EstadoFisico {
     private float peso;
 
     //builder
-    public EstadoFisico(float IMC, float altura, float peso) {
-        this.IMC = IMC;
+    public EstadoFisico(float altura, float peso) {
         this.altura = altura;
         this.peso = peso;
+        this.IMC = peso / (altura * altura);
     }
 
     //getters
