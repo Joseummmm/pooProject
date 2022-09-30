@@ -1,5 +1,6 @@
 package com.company.poo;
 import java.util.Date;
+
 public class Usuario {
     //atributos
     private String nombre;
@@ -11,7 +12,7 @@ public class Usuario {
     private Rutina rutinaRecomendada;
     private Dieta dietaRecomendada;
 
-    //builder
+    //builders
     public Usuario(String nombre, String rut, Date fechaNacimiento, Date fechaIngreso, int edad, EstadoFisico estadoFisico) {
         this.nombre = nombre;
         this.rut = rut;
@@ -20,7 +21,14 @@ public class Usuario {
         this.edad = edad;
         this.estadoFisico = estadoFisico;
     }
+    
+    public Usuario(String nombre, String rut, int Edad){
+        this.nombre = nombre;
+        this.rut = rut;
+        this.edad = edad;
+    }
 
+    
     //getters and setters
     public String getNombre() {
         return this.nombre;
