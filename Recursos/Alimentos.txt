@@ -1,12 +1,13 @@
 Nombre:Lenteja
+Tipo:Legumbre
 GramosPorcion:60
 Energia:129
 Proteinas:14.6
 Grasas:1.1
 Azucares:1.5
 Sodio:7
-
 Nombre:Poroto Negro
+Tipo:Legumbre
 GramosPorcion:17
 Energia:140.0
 Proteinas:12.1
