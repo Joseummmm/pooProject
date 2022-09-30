@@ -11,6 +11,26 @@ public class Main {
         ArrayList<Ejercicio> ejerciciosDisponibles = new ArrayList<>();
         leerAlimentosDisponibles(alimentosDisponibles);
         leerEjerciciosDisponibles(ejerciciosDisponibles);
+        
+        //MENU
+        Scanner dato = new Scanner(System.in);
+        int opcion = dato.nextInt();
+        while (opcion != 4){
+            switch(opcion)
+            {
+                case 1 -> {
+                    Usuario user = new Usuario();
+                }
+                case 2 -> {
+                    for (int i = 0;i<ejercicios.size();i++){
+                        System.out.println(ejercicios.get(i).getNombre()+" "+ejercicios.get(i).getRepeticiones()+" "ejercicios.get(i).getDuracionEstimada()+" "ejercicios.get(i).getCaloriasQuemadasPorMinuto());
+                    }
+                }
+                default -> System.out.println("Opcion invalida");
+            }
+            opcion = dato.nextInt();
+        }
+        
     }
 
     public static void leerAlimentosDisponibles(ArrayList<Alimento> alimentos) throws FileNotFoundException {
