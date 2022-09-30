@@ -1,5 +1,6 @@
 package com.company.poo;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Usuario {
     //atributos
@@ -11,7 +12,9 @@ public class Usuario {
     private EstadoFisico estadoFisico;
     private Rutina rutinaRecomendada;
     private Dieta dietaRecomendada;
-
+    public Scanner dato = new Scanner (System.in);
+    
+    
     //builders
     public Usuario(String nombre, String rut, Date fechaNacimiento, Date fechaIngreso, int edad, EstadoFisico estadoFisico) {
         this.nombre = nombre;
@@ -22,9 +25,33 @@ public class Usuario {
         this.estadoFisico = estadoFisico;
     }
     
-    public Usuario(String nombre, String rut, int edad){
-        this.nombre = nombre;
-        this.rut = rut;
+    
+    public Usuario(){
+        String nombre,rut;
+        
+        System.out.println("Ingrese nombre");
+        nombre = dato.next();
+        
+        while(nombre.matches("[0-9-]*")){
+            System.out.println("Dato en formato incorrecto");
+            System.out.println("Ingrese nombre");
+            nombre = dato.next();
+        }
+        
+        System.out.println("Ingrese rut sin puntos y sin guion y si tiene K reemplaze por un 0");
+        rut = dato.next();
+        
+        while(!rut.matches("[0-9-]*")){
+            System.out.println("Dato en formato incorrecto");
+            System.out.println("Ingrese rut sin puntos y sin guion y si tiene K reemplaze por un 0");
+            rut = dato.next();
+        }
+        
+        System.out.println("Ingrese edad");
+        edad = dato.nextInt();
+        
+        this.Nombre = nombre;
+        this.Rut = rut;
         this.edad = edad;
     }
 
