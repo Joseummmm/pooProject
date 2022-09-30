@@ -1,0 +1,9 @@
+Nombre:Burpees
+Repeticiones:10
+DuracionEstimada:120
+CaloriasQuemadasPorMinuto:14.3
+
+Nombre:Sentadilla
+Repeticiones:15
+DuracionEstimada:120
+CaloriasQuemadasPorMinuto:12.5
