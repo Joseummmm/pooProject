@@ -3,6 +3,7 @@ package com.company.poo;
 public class Alimento {
     //atributos
     private String nombre;
+    private String tipo;
     private int cantidadEnGramos; //gramos que constituyen una porción
     private float energia;
     private float proteinas;
@@ -11,8 +12,9 @@ public class Alimento {
     private float sodio;
 
     //builder
-    public Alimento (String nombre, int cantidadEnGramos, float energia, float proteinas, float grasas, float azucares, float sodio) {
+    public Alimento (String nombre, String tipo, int cantidadEnGramos, float energia, float proteinas, float grasas, float azucares, float sodio) {
         this.nombre = nombre;
+        this.tipo = tipo;
         this.cantidadEnGramos = cantidadEnGramos;
         this.energia = energia;
         this.proteinas = proteinas;
@@ -21,7 +23,7 @@ public class Alimento {
         this.sodio = sodio;
     }
 
-    //setters
+    //setters and getters
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -38,19 +40,11 @@ public class Alimento {
         this.proteinas = proteinas;
     }
 
-    public void setGrasaTotal(float grasas) {
-        this.grasas = grasas;
-    }
-
-    public void setAzucaresTotales(float azucares) {
-        this.azucares = azucares;
-    }
 
     public void setSodio(float sodio) {
         this.sodio = sodio;
     }
 
-    //getters
     public String getNombre() {
         return nombre;
     }
@@ -76,5 +70,24 @@ public class Alimento {
 
     public float getSodio() {
         return sodio;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setGrasas(float grasas) {
+        this.grasas = grasas;
+    }
+
+    public float getAzucares() {
+        return azucares;
+    }
+
+    public void setAzucares(float azucares) {
+        this.azucares = azucares;
     }
 }
