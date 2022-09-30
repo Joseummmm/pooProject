@@ -8,6 +8,8 @@ public class Usuario {
     private Date fechaIngreso;
     private int edad;
     private EstadoFisico estadoFisico;
+    private Rutina rutinaRecomendada;
+    private Dieta dietaRecomendada;
 
     //builder
     public Usuario(String nombre, String rut, Date fechaNacimiento, Date fechaIngreso, int edad, EstadoFisico estadoFisico) {
@@ -19,7 +21,7 @@ public class Usuario {
         this.estadoFisico = estadoFisico;
     }
 
-    //getters
+    //getters and setters
     public String getNombre() {
         return this.nombre;
     }
@@ -44,7 +46,6 @@ public class Usuario {
         return this.estadoFisico;
     }
 
-    //setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -67,5 +68,21 @@ public class Usuario {
 
     public void setEstadoFisico(EstadoFisico estadoFisico) {
         this.estadoFisico = estadoFisico;
+    }
+
+    public Rutina getRutinaRecomendada() {
+        return rutinaRecomendada;
+    }
+
+    public void setRutinaRecomendada(Rutina rutinaRecomendada) {
+        this.rutinaRecomendada = rutinaRecomendada;
+    }
+
+    public Dieta getDietaRecomendada() {
+        return dietaRecomendada;
+    }
+
+    public void setDietaRecomendada(Dieta dietaRecomendada) {
+        this.dietaRecomendada = dietaRecomendada;
     }
 }

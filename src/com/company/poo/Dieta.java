@@ -4,20 +4,15 @@ import java.util.ArrayList;
 
 public class Dieta {
     //atributos
-    private ArrayList<Alimento> alimentos;
-    private float energiaTotal;
-    private float proteinaTotal;
-    private float grasaTotal;
-    private float azucarTotal;
-    private float sodio;
+    private ArrayList<Alimento> alimentos = new ArrayList<>();
+    private float energiaTotal = 0;
+    private float proteinaTotal = 0;
+    private float grasaTotal = 0;
+    private float azucarTotal = 0;
+    private float sodioTotal = 0;
 
     //builder
     public Dieta (ArrayList<Alimento> alimentos) {
-        this.energiaTotal = 0;
-        this.proteinaTotal = 0;
-        this.grasaTotal = 0;
-        this.azucarTotal = 0;
-        this.sodio = 0;
         this.alimentos = alimentos;
         for (Alimento alimento:
              alimentos) {
@@ -25,7 +20,7 @@ public class Dieta {
             proteinaTotal += alimento.getProteinas();
             grasaTotal += alimento.getGrasas();
             azucarTotal += alimento.getAzucar();
-            sodio += alimento.getSodio();
+            sodioTotal += alimento.getSodio();
         }
     }
 
@@ -50,8 +45,8 @@ public class Dieta {
         return azucarTotal;
     }
 
-    public float getSodio() {
-        return sodio;
+    public float getSodioTotal() {
+        return sodioTotal;
     }
 
     //setters
@@ -75,7 +70,7 @@ public class Dieta {
         this.azucarTotal = azucarTotal;
     }
 
-    public void setSodio(float sodio) {
-        this.sodio = sodio;
+    public void setSodioTotal(float sodio) {
+        this.sodioTotal = sodio;
     }
 }

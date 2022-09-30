@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Rutina {
     //atributos
-    private ArrayList<Ejercicio> ejercicios;
+    private ArrayList<Ejercicio> ejercicios = new ArrayList<>();
     private int tiempoEstimado;
     private int series;
 
