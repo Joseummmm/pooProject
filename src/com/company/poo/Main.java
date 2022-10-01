@@ -2,35 +2,24 @@ package com.company.poo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         ArrayList<Alimento> alimentosDisponibles = new ArrayList<>();
         ArrayList<Ejercicio> ejerciciosDisponibles = new ArrayList<>();
         leerAlimentosDisponibles(alimentosDisponibles);
         leerEjerciciosDisponibles(ejerciciosDisponibles);
-        
-        //MENU
-        Scanner dato = new Scanner(System.in);
-        int opcion = dato.nextInt();
-        while (opcion != 4){
-            switch(opcion)
-            {
-                case 1 -> {
-                    Usuario user = new Usuario();
-                }
-                case 2 -> {
-                    for (int i = 0;i<ejercicios.size();i++){
-                        System.out.println(ejercicios.get(i).getNombre()+" "+ejercicios.get(i).getRepeticiones()+" "ejercicios.get(i).getDuracionEstimada()+" "ejercicios.get(i).getCaloriasQuemadasPorMinuto());
-                    }
-                }
-                default -> System.out.println("Opcion invalida");
-            }
-            opcion = dato.nextInt();
+        Usuario usuario;
+        if (!existeUsuario()) {
+            //FALTA ESCRIBIR CASO DONDE EXISTE EL USUARIO
+            usuario = obtenerUsuario();
+            escribirDatosUsuario(usuario);
         }
-        
     }
 
     public static void leerAlimentosDisponibles(ArrayList<Alimento> alimentos) throws FileNotFoundException {
@@ -65,6 +54,45 @@ public class Main {
                     Integer.parseInt(atributosAgregar[2]),Float.parseFloat(atributosAgregar[3]));
             ejercicios.add(ejercicioAgregar);
         }
+        scannerAlimentos.close();
+    }
+
+    public static void escribirDatosUsuario(Usuario usuarioEscribir) throws IOException {
+        String filePath = new File("").getAbsolutePath();
+        File archivoUsuario = new File(filePath + "\\Recursos\\DatosUsuario.txt");
+        FileWriter writer = new FileWriter(archivoUsuario);
+        writer.write("Nombre:" + usuarioEscribir.getNombre());
+        writer.write("Rut:" + usuarioEscribir.getRut());
+        writer.write("FechaNacimiento:" + usuarioEscribir.getFechaNacimiento());
+        writer.write("FechaIngreso:" + usuarioEscribir.getFechaIngreso());
+        writer.write("Edad:" + usuarioEscribir.getEdad());
+        writer.write("IMC:" + usuarioEscribir.getEstadoFisico().getIMC());
+        writer.write("Altura:" + usuarioEscribir.getEstadoFisico().getAltura());
+        writer.write("Peso:" + usuarioEscribir.getEstadoFisico().getPeso());
+        //ESCRIBIR ESTADO FISICO
+        writer.close();
+    }
+
+    public static Usuario obtenerUsuario() {
+        Usuario usuario = new Usuario();
+        Scanner scanner = new Scanner(System.in);
+        LocalDateTime hoy = LocalDateTime.now();
+        System.out.println("Ingrese su nombre: ");
+        usuario.setNombre(scanner.nextLine());
+        System.out.println("Ingrese su rut: ");
+        usuario.setRut(scanner.nextLine());
+        System.out.println("Ingrese su fecha de nacimiento (DD//MM//AA): ");
+        usuario.setFechaNacimiento(scanner.nextLine());
+        usuario.setFechaIngreso(hoy.getDayOfMonth() + String.valueOf(hoy.getMonthValue()) +
+                hoy.getYear());
+        return usuario;
+    }
+
+    public static boolean existeUsuario() throws FileNotFoundException {
+        String filePath = new File("").getAbsolutePath();
+        File archivoUsuario = new File(filePath + "\\Recursos\\Usuario.txt");
+        Scanner scanner = new Scanner(archivoUsuario);
+        return Integer.parseInt(scanner.nextLine().split(":")[1]) == 1;
     }
 }
 
