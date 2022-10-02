@@ -7,6 +7,7 @@ public class EstadoFisico {
     private float peso;
 
     //builder
+    public EstadoFisico() {}
     public EstadoFisico(float altura, float peso) {
         this.altura = altura;
         this.peso = peso;
