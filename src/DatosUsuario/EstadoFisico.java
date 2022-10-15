@@ -1,4 +1,4 @@
-package com.company.poo;
+package DatosUsuario;
 
 public class EstadoFisico {
     //atributos

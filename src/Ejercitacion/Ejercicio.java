@@ -1,4 +1,9 @@
-package com.company.poo;
+package Ejercitacion;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Ejercicio {
     //atributos
@@ -47,5 +52,25 @@ public class Ejercicio {
 
     public float getCaloriasQuemadasPorMinuto() {
         return caloriasQuemadasPorMinuto;
+    }
+
+    //METODOS
+    public static ArrayList<Ejercicio> leerEjerciciosDisponibles() throws FileNotFoundException {
+        ArrayList<Ejercicio> ejercicios = new ArrayList<>();
+        int cantidadAtributos = 4;
+        String[] atributosAgregar = new String[cantidadAtributos];
+        String filePath = new File("").getAbsolutePath();
+        File archivoEjercicios = new File(filePath + "\\Recursos\\ElementosDisponibles\\EjerciciosDisponibles.txt");
+        Scanner scannerEjercicios = new Scanner(archivoEjercicios);
+        while (scannerEjercicios.hasNextLine()) {
+            for (int i = 0; i < cantidadAtributos; i++) {
+                atributosAgregar[i] = scannerEjercicios.nextLine().split(":")[1];
+            }
+            Ejercicio ejercicioAgregar = new Ejercicio(atributosAgregar[0], Integer.parseInt(atributosAgregar[1]),
+                    Integer.parseInt(atributosAgregar[2]),Float.parseFloat(atributosAgregar[3]));
+            ejercicios.add(ejercicioAgregar);
+        }
+        scannerEjercicios.close();
+        return ejercicios;
     }
 }

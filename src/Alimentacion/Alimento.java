@@ -1,4 +1,9 @@
-package com.company.poo;
+package Alimentacion;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Alimento {
     //atributos
@@ -89,5 +94,28 @@ public class Alimento {
 
     public void setAzucares(float azucares) {
         this.azucares = azucares;
+    }
+
+    //METODOS
+
+    public static ArrayList<Alimento> leerAlimentosDisponibles() throws FileNotFoundException {
+        ArrayList<Alimento> alimentos = new ArrayList<>();
+        int cantidadAtributos = 8;
+        String[] atributosAgregar = new String[cantidadAtributos];
+        String filePath = new File("").getAbsolutePath();
+        File archivoAlimentos = new File(filePath + "\\Recursos\\ElementosDisponibles\\AlimentosDisponibles.txt");
+        Scanner scannerAlimentos = new Scanner(archivoAlimentos);
+        while (scannerAlimentos.hasNextLine()) {
+            for (int i = 0; i < cantidadAtributos; i++) {
+                atributosAgregar[i] = scannerAlimentos.nextLine().split(":")[1];
+            }
+            Alimento alimentoAgregar = new Alimento(atributosAgregar[0], atributosAgregar[1],
+                    Integer.parseInt(atributosAgregar[2]),Float.parseFloat(atributosAgregar[3]),
+                    Float.parseFloat(atributosAgregar[4]), Float.parseFloat(atributosAgregar[5]),
+                    Float.parseFloat(atributosAgregar[6]), Float.parseFloat(atributosAgregar[7]));
+            alimentos.add(alimentoAgregar);
+        }
+        scannerAlimentos.close();
+        return alimentos;
     }
 }
