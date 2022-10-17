@@ -88,12 +88,15 @@ public class Alimento {
         ArrayList<Alimento> alimentos = new ArrayList<>();
         int cantidadAtributos = 8;
         String[] atributosAgregar = new String[cantidadAtributos];
-        String filePath = new File("").getAbsolutePath();
+        String filePath = new File("").getAbsolutePath(), componentesLinea;
         File archivoAlimentos = new File(filePath + "\\Recursos\\ElementosDisponibles\\AlimentosDisponibles.txt");
         Scanner scannerAlimentos = new Scanner(archivoAlimentos);
         while (scannerAlimentos.hasNextLine()) {
             for (int i = 0; i < cantidadAtributos; i++) {
-                atributosAgregar[i] = scannerAlimentos.nextLine().split(":")[1];
+                componentesLinea = scannerAlimentos.nextLine();
+                if (componentesLinea.contains(":")) {
+                    atributosAgregar[i] = componentesLinea.split(":")[1];
+                }
             }
             Alimento alimentoAgregar = new Alimento(atributosAgregar[0], atributosAgregar[1],
                     Integer.parseInt(atributosAgregar[2]),Float.parseFloat(atributosAgregar[3]),

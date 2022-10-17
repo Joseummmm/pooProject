@@ -56,12 +56,15 @@ public class Ejercicio {
         ArrayList<Ejercicio> ejercicios = new ArrayList<>();
         int cantidadAtributos = 4;
         String[] atributosAgregar = new String[cantidadAtributos];
-        String filePath = new File("").getAbsolutePath();
+        String filePath = new File("").getAbsolutePath(), componentesLinea;
         File archivoEjercicios = new File(filePath + "\\Recursos\\ElementosDisponibles\\EjerciciosDisponibles.txt");
         Scanner scannerEjercicios = new Scanner(archivoEjercicios);
         while (scannerEjercicios.hasNextLine()) {
             for (int i = 0; i < cantidadAtributos; i++) {
-                atributosAgregar[i] = scannerEjercicios.nextLine().split(":")[1];
+                componentesLinea = scannerEjercicios.nextLine();
+                if (componentesLinea.contains(":")) {
+                    atributosAgregar[i] = componentesLinea.split(":")[1];
+                }
             }
             Ejercicio ejercicioAgregar = new Ejercicio(atributosAgregar[0], Integer.parseInt(atributosAgregar[1]),
                     Integer.parseInt(atributosAgregar[2]),Float.parseFloat(atributosAgregar[3]));
