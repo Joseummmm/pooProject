@@ -37,6 +37,8 @@ public class Ejercicio {
     public void setCaloriasQuemadasPorMinuto(float caloriasQuemadasPorMinuto) {
         this.caloriasQuemadasPorMinuto = caloriasQuemadasPorMinuto;
     }
+
+    //getter
     public String getNombre() {
         return nombre;
     }
