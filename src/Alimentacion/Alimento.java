@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Alimento {
     //atributos
     private String nombre;
-    private String tipo;
+    private TipoAlimento tipo;
     private int cantidadEnGramos; //gramos que constituyen una porción
     private float energia;
     private float proteinas;
@@ -19,7 +19,7 @@ public class Alimento {
     private float sodio;
 
     //builder
-    public Alimento (String nombre, String tipo, int cantidadEnGramos, float energia, float proteinas, float grasas, float azucares, float sodio) {
+    public Alimento (String nombre, TipoAlimento tipo, int cantidadEnGramos, float energia, float proteinas, float grasas, float azucares, float sodio) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.cantidadEnGramos = cantidadEnGramos;
@@ -67,17 +67,17 @@ public class Alimento {
     public float getSodio() {
         return sodio;
     }
-    public String getTipo() {
-        return tipo;
-    }
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
     public void setGrasas(float grasas) {
         this.grasas = grasas;
     }
     public float getAzucares() {
         return azucares;
+    }
+    public TipoAlimento getTipo() {
+        return tipo;
+    }
+    public void setTipo(TipoAlimento tipo) {
+        this.tipo = tipo;
     }
     public void setAzucares(float azucares) {
         this.azucares = azucares;
@@ -98,7 +98,7 @@ public class Alimento {
                     atributosAgregar[i] = componentesLinea.split(":")[1];
                 }
             }
-            Alimento alimentoAgregar = new Alimento(atributosAgregar[0], atributosAgregar[1],
+            Alimento alimentoAgregar = new Alimento(atributosAgregar[0], TipoAlimento.valueOf(atributosAgregar[1]),
                     Integer.parseInt(atributosAgregar[2]),Float.parseFloat(atributosAgregar[3]),
                     Float.parseFloat(atributosAgregar[4]), Float.parseFloat(atributosAgregar[5]),
                     Float.parseFloat(atributosAgregar[6]), Float.parseFloat(atributosAgregar[7]));
@@ -144,7 +144,7 @@ public class Alimento {
         for (Alimento alimento :
                 alimentos) {
             writer.write("Nombre:" + alimento.getNombre() + "\n");
-            writer.write("Tipo:" + alimento.getTipo() + "\n");
+            writer.write("Tipo:" + alimento.getTipo().name() + "\n");
             writer.write("GramosPorcion:" + alimento.getCantidadEnGramos() + "\n");
             writer.write("Energia:" + alimento.getEnergia() + "\n");
             writer.write("Proteinas:" + alimento.getProteinas() + "\n");
@@ -158,13 +158,14 @@ public class Alimento {
     //obtener alimento desde la consola
     public static Alimento obtenerAlimento() {
         Scanner scanner = new Scanner(System.in);
-        String nombre,tipo;
+        String nombre;
+        TipoAlimento tipo;
         int cantidadEnGramos;
         float energia,proteinas,grasas,azucares,sodio;
         System.out.println("Ingrese el nombre del alimento: ");
         nombre = scanner.nextLine();
         System.out.println("Ingrese el tipo de alimento: ");
-        tipo = scanner.nextLine();
+        tipo = seleccionarTipoAlimento();
         System.out.println("Ingrese la energia total del alimento: ");
         energia = scanner.nextFloat();
         System.out.println("Ingrese la proteina total del alimento: ");
@@ -208,7 +209,7 @@ public class Alimento {
                 System.out.println("Ingrese el nuevo nombre del alimento: ");
                 alimentos.get(index).setNombre(scanner.nextLine());
                 System.out.println("Ingrese el nuevo tipo del alimento: ");
-                alimentos.get(index).setTipo(scanner.nextLine());
+                alimentos.get(index).setTipo(seleccionarTipoAlimento());
                 System.out.println("Ingrese la nueva cantidad de gramos que constituyen una porcion: ");
                 alimentos.get(index).setCantidadEnGramos(scanner.nextInt());
                 System.out.println("Ingrese la nueva cantidad de energia total: ");
@@ -233,7 +234,7 @@ public class Alimento {
                 System.out.println("Ingrese el nuevo nombre del alimento: ");
                 alimentos.get(index).setNombre(scanner.nextLine());
                 System.out.println("Ingrese el nuevo tipo del alimento: ");
-                alimentos.get(index).setTipo(scanner.nextLine());
+                alimentos.get(index).setTipo(seleccionarTipoAlimento());
                 System.out.println("Ingrese la nueva cantidad de gramos que constituyen una porcion: ");
                 alimentos.get(index).setCantidadEnGramos(scanner.nextInt());
                 System.out.println("Ingrese la nueva cantidad de energia total: ");
@@ -249,5 +250,66 @@ public class Alimento {
             }
         }
         reescribirAlimentosDisponibles(alimentos);
+    }
+
+    //revisa si ya se encuentra un tipo de alimento dentro de un arraylist de alimentos
+    public static boolean seEncuentraTipo(ArrayList<Alimento> alimentos, TipoAlimento tipoBuscar) {
+        for (Alimento x :
+                alimentos) {
+            if (x.getTipo() == tipoBuscar) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Seleccionar tipo de alimento
+    public static TipoAlimento seleccionarTipoAlimento() {
+        Scanner scanner = new Scanner(System.in);
+        TipoAlimento tipoReturn = TipoAlimento.PENDIENTE;
+        int opcion;
+        System.out.println("1.Legumbre\n2.Lacteo\n3.Carne Blanca\n4.Carne Roja" +
+                "\n5.Fruta\n6.Fruto Seco\n7.Cereal\n8.Verdura\n9.Tuberculo\n10.Hortaliza" +
+                "\n11.Grasa/aceite");
+        opcion = scanner.nextInt();
+        while (opcion < 1 || opcion > 11) {
+            opcion = scanner.nextInt();
+        }
+        switch (opcion) {
+            case 1:
+                tipoReturn = TipoAlimento.LEGUMBRE;
+                break;
+            case 2:
+                tipoReturn = TipoAlimento.LACTEO;
+                break;
+            case 3:
+                tipoReturn = TipoAlimento.CARNE_BLANCA;
+                break;
+            case 4:
+                tipoReturn = TipoAlimento.CARNE_ROJA;
+                break;
+            case 5:
+                tipoReturn = TipoAlimento.FRUTA;
+                break;
+            case 6:
+                tipoReturn = TipoAlimento.FRUTO_SECO;
+                break;
+            case 7:
+                tipoReturn = TipoAlimento.CEREAL;
+                break;
+            case 8:
+                tipoReturn = TipoAlimento.VERDURA;
+                break;
+            case 9:
+                tipoReturn = TipoAlimento.TUBERCULO;
+                break;
+            case 10:
+                tipoReturn = TipoAlimento.HORTALIZA;
+                break;
+            case 11:
+                tipoReturn = TipoAlimento.GRASA;
+                break;
+        }
+        return tipoReturn;
     }
 }

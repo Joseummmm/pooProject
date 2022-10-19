@@ -14,7 +14,7 @@ public class Ejercicio {
     private String nombre;
     private int repeticiones;
     private int duracionEstimada; //en segundos
-    private float caloriasQuemadasPorMinuto; //por minuto
+    private float caloriasQuemadasPorMinuto; //por minuto, en kcal
 
     //builder
     public Ejercicio(String nombre, int repeticiones, int duracionEstimada, float caloriasQuemadasPorMinuto) {

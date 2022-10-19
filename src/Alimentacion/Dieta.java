@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Dieta {
     //atributos
-    private ArrayList<Alimento> alimentos;
+    private ArrayList<Alimento> alimentosDieta;
     private float energiaTotal = 0;
     private float proteinaTotal = 0;
     private float grasaTotal = 0;
@@ -17,10 +17,10 @@ public class Dieta {
     private float sodioTotal = 0;
 
     //builder
-    public Dieta (ArrayList<Alimento> alimentos) {
-        this.alimentos = alimentos;
+    public Dieta (ArrayList<Alimento> alimentosDieta) {
+        this.alimentosDieta = alimentosDieta;
         for (Alimento alimento:
-             alimentos) {
+                alimentosDieta) {
             energiaTotal += alimento.getEnergia();
             proteinaTotal += alimento.getProteinas();
             grasaTotal += alimento.getGrasas();
@@ -28,61 +28,47 @@ public class Dieta {
             sodioTotal += alimento.getSodio();
         }
     }
-
     public Dieta () {}
 
-    //getters
-    public ArrayList<Alimento> getAlimentos() {
-        return alimentos;
+    //getters and setters
+    public ArrayList<Alimento> getAlimentosDieta() {
+        return alimentosDieta;
     }
-
+    public void setAlimentosDieta(ArrayList<Alimento> alimentosDieta) {
+        this.alimentosDieta = alimentosDieta;
+    }
     public float getEnergiaTotal() {
         return energiaTotal;
     }
-
     public float getProteinaTotal() {
         return proteinaTotal;
     }
-
     public float getGrasaTotal() {
         return grasaTotal;
     }
-
     public float getAzucarTotal() {
         return azucarTotal;
     }
-
     public float getSodioTotal() {
         return sodioTotal;
     }
-
-    //setters
-    public void setAlimentos(ArrayList<Alimento> alimentos) {
-        this.alimentos = alimentos;
-    }
-
     public void setEnergiaTotal(float energiaTotal) {
         this.energiaTotal = energiaTotal;
     }
-
     public void setProteinaTotal(float proteinaTotal) {
         this.proteinaTotal = proteinaTotal;
     }
-
     public void setGrasaTotal(float grasaTotal) {
         this.grasaTotal = grasaTotal;
     }
-
     public void setAzucarTotal(float azucarTotal) {
         this.azucarTotal = azucarTotal;
     }
-
     public void setSodioTotal(float sodio) {
         this.sodioTotal = sodio;
     }
 
     //METODOS
-    //------DIETA------
     public static boolean existeDieta() throws FileNotFoundException {
         String filePath = new File("").getAbsolutePath();
         File archivoUsuario = new File(filePath + "\\Recursos\\RecomendacionUsuario\\Dieta.txt");
@@ -95,7 +81,7 @@ public class Dieta {
         FileWriter writer = new FileWriter(archivoDieta);
         writer.write("existe:1\n");
         writer.write("alimentos:");
-        for (Alimento alimento : dieta.getAlimentos()) {
+        for (Alimento alimento : dieta.getAlimentosDieta()) {
             writer.write(alimento.getNombre() + "-");
         }
 
@@ -126,7 +112,7 @@ public class Dieta {
                 alimentosEstablecer.add(obtenerAlimentoPorNombre(alimento,alimentosDisponibles));
             }
         }
-        dietaDevolver.setAlimentos(alimentosEstablecer);
+        dietaDevolver.setAlimentosDieta(alimentosEstablecer);
         dietaDevolver.setEnergiaTotal(Float.parseFloat(atributos[1]));
         dietaDevolver.setProteinaTotal(Float.parseFloat(atributos[2]));
         dietaDevolver.setGrasaTotal(Float.parseFloat(atributos[3]));
@@ -142,4 +128,5 @@ public class Dieta {
         }
         return null;
     }
+
 }
