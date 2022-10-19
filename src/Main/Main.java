@@ -26,6 +26,8 @@ public class Main {
             Dieta.escribirDieta(recomendarDieta(alimentosDisponibles));
             Rutina.escribirRutina(recomendarRutina(ejerciciosDisponibles,usuario.getEstadoFisico()));
         }
+
+
     }
 
     public static Dieta recomendarDieta(ArrayList<Alimento> alimentosDisponibles) {;
