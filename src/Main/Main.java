@@ -6,12 +6,16 @@ import DatosUsuario.EstadoFisico;
 import DatosUsuario.Usuario;
 import Ejercitacion.Ejercicio;
 import Ejercitacion.Rutina;
+import GUI.MainGUI;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        //GUI DE INICIO ANTES DE TODO
+        //new MainGUI();
         ArrayList<Alimento> alimentosDisponibles = Alimento.leerAlimentosDisponibles();
         ArrayList<Ejercicio> ejerciciosDisponibles = Ejercicio.leerEjerciciosDisponibles();
         Usuario usuario;
@@ -32,9 +36,9 @@ public class Main {
         ArrayList<Alimento> alimentosDieta = new ArrayList<>();
         Random randomizer = new Random();
         int randomIndex;
-        int contadorTipos = 0; //cuando llegue a 7 significa que están todos los tipos
+        int contadorTipos = 0; //cuando llegue a 6 significa que están todos los tipos
         //selecciona un alimento al azar de cada tipo de la lista de alimentos disponibles
-        while (contadorTipos < 7) {
+        while (contadorTipos < 6) {
             randomIndex = randomizer.nextInt(0,alimentosDisponibles.size() + 1);
             if (!Alimento.seEncuentraTipo(alimentosDieta,alimentosDisponibles.get(randomIndex).getTipo())) {
                 alimentosDieta.add(alimentosDisponibles.get(randomIndex));

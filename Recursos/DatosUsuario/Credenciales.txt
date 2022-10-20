@@ -1,2 +1,2 @@
-user:jose
-password:a1b2c3
+alias:jose
+password:123

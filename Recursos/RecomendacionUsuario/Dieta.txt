@@ -1,0 +1,7 @@
+existe:1
+alimentos:Pechuga de pollo-Filete de ternera-Mantequilla-Apio-Papa-Almendra-
+EnergiaTotal:583.7
+ProteinaTotal:48.38
+GrasaTotal:29.57
+AzucarTotal:29.57
+SodioTotal:0.17400001
