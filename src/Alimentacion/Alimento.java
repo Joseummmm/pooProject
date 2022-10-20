@@ -269,8 +269,7 @@ public class Alimento {
         TipoAlimento tipoReturn = TipoAlimento.PENDIENTE;
         int opcion;
         System.out.println("1.Legumbre\n2.Lacteo\n3.Carne Blanca\n4.Carne Roja" +
-                "\n5.Fruta\n6.Fruto Seco\n7.Cereal\n8.Verdura\n9.Tuberculo\n10.Hortaliza" +
-                "\n11.Grasa/aceite");
+                "\n5.Fruta\n6.Fruto Seco\n7.Cereal\n8.Verdura\n9.Tuberculo\n11.Grasa/aceite");
         opcion = scanner.nextInt();
         while (opcion < 1 || opcion > 11) {
             opcion = scanner.nextInt();
@@ -304,9 +303,6 @@ public class Alimento {
                 tipoReturn = TipoAlimento.TUBERCULO;
                 break;
             case 10:
-                tipoReturn = TipoAlimento.HORTALIZA;
-                break;
-            case 11:
                 tipoReturn = TipoAlimento.GRASA;
                 break;
         }

@@ -103,7 +103,7 @@ public class Dieta {
         int cantLineas = 7;
         String[] atributos = new String[cantLineas-1]; //-1 para no contar el existe del inicio
         scannerDieta.nextLine();
-        for (int i = 0; i < cantLineas; i++) {
+        for (int i = 0; i < cantLineas && scannerDieta.hasNextLine(); i++) {
             atributos[i] = scannerDieta.nextLine().split(":")[1];
         }
         scannerDieta.close();

@@ -1,0 +1,7 @@
+existe:1
+alimentos:Filete de ternera-Arroz-Mantequilla-Leche-Papa-Pechuga de pollo-
+EnergiaTotal:689.7
+ProteinaTotal:51.39
+GrasaTotal:21.3
+AzucarTotal:21.3
+SodioTotal:0.17199999

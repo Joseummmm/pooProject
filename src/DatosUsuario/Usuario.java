@@ -36,63 +36,48 @@ public class Usuario {
     public String getNombre() {
         return this.nombre;
     }
-
     public String getRut() {
         return this.rut;
     }
-
     public int getEdad() {
         return this.edad;
     }
-
     public EstadoFisico getEstadoFisico() {
         return this.estadoFisico;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public void setRut(String rut) {
         this.rut = rut;
     }
-
     public void setEdad(int edad) {
         this.edad = edad;
     }
-
     public void setEstadoFisico(EstadoFisico estadoFisico) {
         this.estadoFisico = estadoFisico;
     }
-
     public Rutina getRutinaRecomendada() {
         return rutinaRecomendada;
     }
-
     public void setRutinaRecomendada(Rutina rutinaRecomendada) {
         this.rutinaRecomendada = rutinaRecomendada;
     }
-
     public Dieta getDietaRecomendada() {
         return dietaRecomendada;
     }
-
     public void setDietaRecomendada(Dieta dietaRecomendada) {
         this.dietaRecomendada = dietaRecomendada;
     }
-
     public String getFechaNacimiento() {
         return fechaNacimiento;
     }
-
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
     public String getFechaIngreso() {
         return fechaIngreso;
     }
-
     public void setFechaIngreso(String fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
@@ -155,12 +140,8 @@ public class Usuario {
         int cantLineas = 9;
         String[] atributos = new String[cantLineas-1]; //-1 para no contar el existe del inicio
         scannerDatosUsuario.nextLine();
-        for (int i = 0; i < cantLineas; i++) {
+        for (int i = 0; i < cantLineas && scannerDatosUsuario.hasNextLine(); i++) {
             atributos[i] = scannerDatosUsuario.nextLine().split(":")[1];
-        }
-        for (String x:
-                atributos) {
-            System.out.println(x);
         }
         scannerDatosUsuario.close();
         usuarioReturn.setNombre(atributos[0]);

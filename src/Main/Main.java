@@ -6,12 +6,16 @@ import DatosUsuario.EstadoFisico;
 import DatosUsuario.Usuario;
 import Ejercitacion.Ejercicio;
 import Ejercitacion.Rutina;
+import GUI.MainGUI;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        //GUI DE INICIO ANTES DE TODO
+        //new MainGUI();
         ArrayList<Alimento> alimentosDisponibles = Alimento.leerAlimentosDisponibles();
         ArrayList<Ejercicio> ejerciciosDisponibles = Ejercicio.leerEjerciciosDisponibles();
         Usuario usuario;
@@ -34,10 +38,10 @@ public class Main {
         ArrayList<Alimento> alimentosDieta = new ArrayList<>();
         Random randomizer = new Random();
         int randomIndex;
-        int contadorTipos = 0; //cuando llegue a 7 significa que están todos los tipos
+        int contadorTipos = 0; //cuando llegue a 6 significa que están todos los tipos
         //selecciona un alimento al azar de cada tipo de la lista de alimentos disponibles
-        while (contadorTipos < 7) {
-            randomIndex = randomizer.nextInt(0,alimentosDisponibles.size() + 1);
+        while (contadorTipos < 6) {
+            randomIndex = randomizer.nextInt(0,alimentosDisponibles.size());
             if (!Alimento.seEncuentraTipo(alimentosDieta,alimentosDisponibles.get(randomIndex).getTipo())) {
                 alimentosDieta.add(alimentosDisponibles.get(randomIndex));
                 contadorTipos++;
@@ -56,7 +60,7 @@ public class Main {
         int caloriasQuemar = pesoIdeal >= estadoUsuario.getPeso() ? 500 :
                 (int) (Math.floor(estadoUsuario.getPeso() - pesoIdeal) / 4) * 500;
         while (caloriasQuemar > 0) {
-            randomIndex = randomizer.nextInt(0,ejerciciosDisponibles.size() + 1);
+            randomIndex = randomizer.nextInt(0,ejerciciosDisponibles.size());
             ejerciciosRutina.add(ejerciciosDisponibles.get(randomIndex));
             caloriasQuemar -= ejerciciosDisponibles.get(randomIndex).getCaloriasQuemadasPorMinuto() *
                     ejerciciosDisponibles.get(randomIndex).getDuracionEstimada();
