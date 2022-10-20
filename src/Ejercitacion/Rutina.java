@@ -87,16 +87,20 @@ public class Rutina {
     public static Rutina leerRutina(ArrayList<Ejercicio> ejerciciosDisponibles) throws FileNotFoundException {
         Rutina rutinaDevolver = new Rutina();
         ArrayList<Ejercicio> ejerciciosEstablecer = new ArrayList<>();
-        String filePath = new File("").getAbsolutePath();
+        String filePath = new File("").getAbsolutePath(), componentesLinea;
         File archivoRutina = new File(filePath + "\\Recursos\\RecomendacionUsuario\\Rutina.txt");
         Scanner scannerRutina = new Scanner(archivoRutina);
         int cantLineas = 4;
         String[] atributos = new String[cantLineas-1]; //-1 para no contar el existe del inicio
         scannerRutina.nextLine();
-        for (int i = 0; i < cantLineas; i++) {
-            atributos[i] = scannerRutina.nextLine().split(":")[1];
+        for (int i = 0; i < cantLineas && scannerRutina.hasNextLine(); i++) {
+            componentesLinea = scannerRutina.nextLine();
+            if (componentesLinea.contains(":")) {
+                atributos[i] = componentesLinea.split(":")[1];
+            }
         }
         scannerRutina.close();
+
         for (String ejercicio : atributos[0].split("-")) {
             if (obtenerEjercicioPorNombre(ejercicio, ejerciciosDisponibles) != null) {
                 ejerciciosEstablecer.add(obtenerEjercicioPorNombre(ejercicio,ejerciciosDisponibles));

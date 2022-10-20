@@ -1,9 +1,9 @@
 existe:1
-Nombre:Jose
+Nombre:jose
 Rut:20.562.313-2
 FechaNacimiento:21/08/2002
 FechaIngreso:19/10/2022
 Edad:20
-IMC:18.206644
+IMC:17.50639
 Altura:1.69
-Peso:52.0
+Peso:50.0

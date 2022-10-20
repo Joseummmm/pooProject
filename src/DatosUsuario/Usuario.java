@@ -140,12 +140,8 @@ public class Usuario {
         int cantLineas = 9;
         String[] atributos = new String[cantLineas-1]; //-1 para no contar el existe del inicio
         scannerDatosUsuario.nextLine();
-        for (int i = 0; i < cantLineas; i++) {
+        for (int i = 0; i < cantLineas && scannerDatosUsuario.hasNextLine(); i++) {
             atributos[i] = scannerDatosUsuario.nextLine().split(":")[1];
-        }
-        for (String x:
-                atributos) {
-            System.out.println(x);
         }
         scannerDatosUsuario.close();
         usuarioReturn.setNombre(atributos[0]);

@@ -1,4 +1,4 @@
 existe:1
-ejercicios:
-TiempoEstimado:0
-Series:0
+ejercicios:Burpees-
+TiempoEstimado:120
+Series:15

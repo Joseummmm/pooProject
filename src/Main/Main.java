@@ -39,7 +39,7 @@ public class Main {
         int contadorTipos = 0; //cuando llegue a 6 significa que están todos los tipos
         //selecciona un alimento al azar de cada tipo de la lista de alimentos disponibles
         while (contadorTipos < 6) {
-            randomIndex = randomizer.nextInt(0,alimentosDisponibles.size() + 1);
+            randomIndex = randomizer.nextInt(0,alimentosDisponibles.size());
             if (!Alimento.seEncuentraTipo(alimentosDieta,alimentosDisponibles.get(randomIndex).getTipo())) {
                 alimentosDieta.add(alimentosDisponibles.get(randomIndex));
                 contadorTipos++;
@@ -58,7 +58,7 @@ public class Main {
         int caloriasQuemar = pesoIdeal >= estadoUsuario.getPeso() ? 500 :
                 (int) (Math.floor(estadoUsuario.getPeso() - pesoIdeal) / 4) * 500;
         while (caloriasQuemar > 0) {
-            randomIndex = randomizer.nextInt(0,ejerciciosDisponibles.size() + 1);
+            randomIndex = randomizer.nextInt(0,ejerciciosDisponibles.size());
             ejerciciosRutina.add(ejerciciosDisponibles.get(randomIndex));
             caloriasQuemar -= ejerciciosDisponibles.get(randomIndex).getCaloriasQuemadasPorMinuto() *
                     ejerciciosDisponibles.get(randomIndex).getDuracionEstimada();
