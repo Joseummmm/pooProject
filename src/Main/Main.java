@@ -2,6 +2,7 @@ package Main;
 
 import Alimentacion.Alimento;
 import Alimentacion.Dieta;
+import DatosUsuario.Credencial;
 import DatosUsuario.EstadoFisico;
 import DatosUsuario.Usuario;
 import Ejercitacion.Ejercicio;
@@ -14,23 +15,26 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //GUI DE INICIO ANTES DE TODO
-        //new MainGUI();
+
         ArrayList<Alimento> alimentosDisponibles = Alimento.leerAlimentosDisponibles();
         ArrayList<Ejercicio> ejerciciosDisponibles = Ejercicio.leerEjerciciosDisponibles();
         Usuario usuario;
+
+        //GUI DE INICIO ANTES DE ifs
+        new MainGUI();
+
         //establecer datos del objeto usuario dependiendo de si ya existe o no
         if (Usuario.existeUsuario()) {
             usuario = Usuario.leerUsuario();
             usuario.setRutinaRecomendada(Rutina.leerRutina(ejerciciosDisponibles));
             usuario.setDietaRecomendada(Dieta.leerDieta(alimentosDisponibles));
-        } else {
+        }
+        else {
             usuario = Usuario.obtenerUsuario();
             Usuario.escribirDatosUsuario(usuario);
             Dieta.escribirDieta(recomendarDieta(alimentosDisponibles));
             Rutina.escribirRutina(recomendarRutina(ejerciciosDisponibles,usuario.getEstadoFisico()));
         }
-
 
     }
 

@@ -1,2 +1,2 @@
-alias:jose
-password:123
+admin
+admin
