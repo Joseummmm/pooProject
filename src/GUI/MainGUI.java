@@ -61,9 +61,9 @@ public class MainGUI implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         BotonLogin b = new BotonLogin(userText,passwordText,successLabel);
         if (b.check()) {
+            frame.setVisible(false);
             new menuRepresentativo();
         }
-        frame.setVisible(false);
 
     }
 }
