@@ -52,9 +52,14 @@ public class menuRepresentativo {
                     Alimento.obtenerAlimento();
                 }
                 case 4 ->{
+                    System.out.println("Ingrese datos exactos de ejercicio para su eliminación");
+                    System.out.println("Nombre ejercicio:");
                     String nombre = dato.next();
+                    System.out.println("Repeticiones ejercicio");
                     int repeticiones = dato.nextInt();
+                    System.out.println("Duracion ejercicio");
                     int duracionEstimada = dato.nextInt();
+                    System.out.println("Calorias quemadas:");
                     float calorias = dato.nextFloat();
 
                     Ejercicio ejercicio = new Ejercicio(nombre,repeticiones,duracionEstimada,calorias);
@@ -71,7 +76,7 @@ public class menuRepresentativo {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-
+                    System.out.println("ejercicio eliminado");
 
                 }
                 case 5 ->{
@@ -87,6 +92,7 @@ public class menuRepresentativo {
                     System.out.println("Adios :)");
                 }
                 default ->{
+                    System.out.println("Opcion invalida!");
                 }
             }
         }while (opcion != 0);
