@@ -74,6 +74,15 @@ public class menuRepresentativo {
 
 
                 }
+                case 5 ->{
+                    ArrayList<Alimento> alimentos = null;
+                    try {
+                        alimentos = Alimento.leerAlimentosDisponibles();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Alimento.mostrarAlimentosDisponibles(alimentos);
+                }
 
                 default ->{
                 }
