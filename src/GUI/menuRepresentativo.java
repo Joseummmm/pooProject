@@ -16,11 +16,12 @@ public class menuRepresentativo {
             System.out.println("1. Cambiar Usuario y contreseña");
             System.out.println("2. Buscar Alimento");
             System.out.println("3. Crear Alimento");
-            System.out.println("4. Eliminar x");
+            System.out.println("4. Eliminar ejercicio");
             System.out.println("5. Mostrar Alimentos");
             System.out.println("0. Cerrar programa");
             System.out.println("Registre opcion deseada:");
             opcion = dato.nextInt();
+
             switch (opcion){
                 case 1 ->{
                     System.out.println("Ingrese usuario:");
