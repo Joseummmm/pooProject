@@ -1,22 +1,22 @@
 package GUI;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import DatosUsuario.Credencial;
 import Alimentacion.Alimento;
 import Ejercitacion.Ejercicio;
-import java.util.ArrayList;
 public class menuRepresentativo {
 
     public menuRepresentativo(){
         System.out.println("Bienvenido!");
         int opcion = -1;
         Scanner dato = new Scanner(System.in);
-        do{
+        while (opcion != 0){
             System.out.println("1. Cambiar Usuario y contreseña");
             System.out.println("2. Buscar Alimento");
             System.out.println("3. Crear Alimento");
-            System.out.println("4. Eliminar ejercicio");
+            System.out.println("4. Eliminar x");
             System.out.println("5. Mostrar Alimentos");
             System.out.println("0. Cerrar programa");
             System.out.println("Registre opcion deseada:");
@@ -52,21 +52,16 @@ public class menuRepresentativo {
                     Alimento.obtenerAlimento();
                 }
                 case 4 ->{
-                    System.out.println("Ingrese datos exactos de ejercicio para su eliminación");
-                    System.out.println("Nombre ejercicio:");
                     String nombre = dato.next();
-                    System.out.println("Repeticiones ejercicio");
                     int repeticiones = dato.nextInt();
-                    System.out.println("Duracion ejercicio");
                     int duracionEstimada = dato.nextInt();
-                    System.out.println("Calorias quemadas:");
                     float calorias = dato.nextFloat();
 
                     Ejercicio ejercicio = new Ejercicio(nombre,repeticiones,duracionEstimada,calorias);
 
                     ArrayList<Ejercicio> ejercicios = null;
                     try {
-                        ejercicios = Ejercicio.leerEjerciciosDisponibles();
+                         ejercicios = Ejercicio.leerEjerciciosDisponibles();
                     } catch (FileNotFoundException e) {
                         throw new RuntimeException(e);
                     }
@@ -76,7 +71,7 @@ public class menuRepresentativo {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    System.out.println("ejercicio eliminado");
+
 
                 }
                 case 5 ->{
@@ -88,14 +83,11 @@ public class menuRepresentativo {
                     }
                     Alimento.mostrarAlimentosDisponibles(alimentos);
                 }
-                case 0 ->{
-                    System.out.println("Adios :)");
-                }
+
                 default ->{
-                    System.out.println("Opcion invalida!");
                 }
             }
-        }while (opcion != 0);
-        System.exit(0);
+        }
+        System.out.println("Adios :)");
     }
 }
