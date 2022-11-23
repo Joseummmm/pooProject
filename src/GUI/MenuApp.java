@@ -1,5 +1,6 @@
 package GUI;
 
+import Alimentacion.Alimento;
 import DatosUsuario.Credencial;
 import Ejercitacion.Ejercicio;
 
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class MenuApp {
     private JButton nuevoUsuarioYContraseñaButton;
     private JButton eliminarEjercicioButton;
-    private JButton agegarAlimentoButton;
+    private JButton buscarAlimentoButton;
     private JButton mostrarAlimentosButton;
     private JButton crearAlimentoButton;
     private JButton cerrarProgramaButton;
@@ -86,14 +87,60 @@ public class MenuApp {
                 ArrayList<Ejercicio> ejercicios = null;
                 try {
                     ejercicios = Ejercicio.leerEjerciciosDisponibles();
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
+                } catch (FileNotFoundException a) {
+                    throw new RuntimeException(a);
                 }
 
                 try {
                     Ejercicio.eliminarEjerciciosDisponible(ejercicios,ejercicio);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                } catch (IOException a) {
+                    throw new RuntimeException(a);
+                }
+            }
+        });
+
+        mostrarAlimentosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Alimento> alimentos = null;
+                try {
+                    alimentos = Alimento.leerAlimentosDisponibles();
+                } catch (FileNotFoundException op) {
+                    throw new RuntimeException(op);
+                }
+                Alimento.mostrarAlimentosDisponibles(alimentos);
+            }
+        });
+        crearAlimentoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Alimento.obtenerAlimento();
+            }
+        });
+        cerrarProgramaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        buscarAlimentoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Scanner dato = new Scanner(System.in);
+                ArrayList<Alimento>alimentos = null;
+                try {
+                    alimentos = Alimento.leerAlimentosDisponibles();
+                } catch (FileNotFoundException a) {
+                    throw new RuntimeException(a);
+                }
+                System.out.println("Ingrese el alimento buscado");
+                String alimentoBuscado = dato.next();
+                Alimento alimentoBuscar = Alimento.buscarAlimento(alimentos,alimentoBuscado);
+                if (alimentoBuscar != null){
+                    System.out.println("Alimento si existe");
+                }
+                else{
+                    System.out.println("Alimento no existe");
                 }
             }
         });

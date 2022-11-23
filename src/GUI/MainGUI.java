@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -62,7 +63,7 @@ public class MainGUI implements ActionListener{
         BotonLogin b = new BotonLogin(userText,passwordText,successLabel);
         if (b.check()) {
             frame.setVisible(false);
-            new menuRepresentativo();
+            new MenuApp();
         }
 
     }

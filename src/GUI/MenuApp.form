@@ -26,14 +26,14 @@
           <text value="Eliminar ejercicio"/>
         </properties>
       </component>
-      <component id="ddfca" class="javax.swing.JButton" binding="agegarAlimentoButton" default-binding="true">
+      <component id="ddfca" class="javax.swing.JButton" binding="buscarAlimentoButton">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="208" height="30"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Agegar alimento"/>
+          <text value="Buscar alimento"/>
         </properties>
       </component>
       <component id="7488" class="javax.swing.JButton" binding="mostrarAlimentosButton" default-binding="true">
