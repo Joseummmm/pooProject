@@ -13,15 +13,51 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuApp {
-    private JButton nuevoUsuarioYContraseñaButton;
+    private JButton nuevoUserYPass;
     private JButton eliminarEjercicioButton;
     private JButton buscarAlimentoButton;
     private JButton mostrarAlimentosButton;
     private JButton crearAlimentoButton;
     private JButton cerrarProgramaButton;
-
+    private JFrame frame;
+    private JPanel panel;
     public MenuApp() {
-        nuevoUsuarioYContraseñaButton.addActionListener(new ActionListener() {
+
+        frame = new JFrame();
+        panel = new JPanel();
+        frame.setSize(400,500);
+        frame.setTitle("Welcome");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.add(panel);
+
+        nuevoUserYPass = new JButton("Nuevo User Y Pass");
+        nuevoUserYPass.setBounds(20,20,80,25);
+        panel.add(nuevoUserYPass);
+
+        eliminarEjercicioButton = new JButton("Eliminar Ejercicio");
+        eliminarEjercicioButton.setBounds(120,20,80,25);
+        panel.add(eliminarEjercicioButton);
+
+        buscarAlimentoButton = new JButton("buscar alimento");
+        buscarAlimentoButton.setBounds(240,20,80,25);
+        panel.add(buscarAlimentoButton);
+
+        mostrarAlimentosButton = new JButton("Mostrar alimentos por consola");
+        mostrarAlimentosButton.setBounds(20,60,80,25);
+        panel.add(mostrarAlimentosButton);
+
+        crearAlimentoButton = new JButton("Crear alimento");
+        crearAlimentoButton.setBounds(120,60,80,25);
+        panel.add(crearAlimentoButton);
+
+        cerrarProgramaButton = new JButton("Cerrar programa");
+        cerrarProgramaButton.setBounds(240,60,80,25);
+        panel.add(cerrarProgramaButton);
+
+        frame.setVisible(true);
+
+        nuevoUserYPass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Scanner dato = new Scanner(System.in);
