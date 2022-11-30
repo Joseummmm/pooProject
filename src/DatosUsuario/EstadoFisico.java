@@ -1,16 +1,13 @@
 package DatosUsuario;
 
-public class EstadoFisico {
+public class EstadoFisico extends Estado{
     //atributos
     private float IMC;
-    private float altura;
-    private float peso;
 
     //builder
-    public EstadoFisico() {}
+    public EstadoFisico() {super();}
     public EstadoFisico(float altura, float peso) {
-        this.altura = altura;
-        this.peso = peso;
+        super(altura,peso);
         this.IMC = peso / (altura * altura);
     }
 
@@ -19,24 +16,8 @@ public class EstadoFisico {
         return IMC;
     }
 
-    public float getAltura() {
-        return altura;
-    }
-
-    public float getPeso() {
-        return peso;
-    }
-
     //setters
     public void setIMC(float IMC) {
         this.IMC = IMC;
-    }
-
-    public void setAltura(float altura) {
-        this.altura = altura;
-    }
-
-    public void setPeso(float peso) {
-        this.peso = peso;
     }
 }
