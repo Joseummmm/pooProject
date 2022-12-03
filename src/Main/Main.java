@@ -4,6 +4,7 @@ import Alimentacion.Alimento;
 import Alimentacion.Dieta;
 import DatosUsuario.Credencial;
 import DatosUsuario.EstadoFisico;
+import DatosUsuario.IniciosSesion;
 import DatosUsuario.Usuario;
 import Ejercitacion.Ejercicio;
 import Ejercitacion.Rutina;
@@ -11,6 +12,7 @@ import GUI.MainGUI;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 public class Main {
@@ -19,7 +21,7 @@ public class Main {
         ArrayList<Alimento> alimentosDisponibles = Alimento.leerAlimentosDisponibles();
         ArrayList<Ejercicio> ejerciciosDisponibles = Ejercicio.leerEjerciciosDisponibles();
         Usuario usuario;
-
+        IniciosSesion.registrarInicioSesion(new Date());
         //GUI DE INICIO ANTES DE ifs
         new MainGUI();
 
