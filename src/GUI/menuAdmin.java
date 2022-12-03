@@ -3,12 +3,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Alimentacion.Dieta;
 import DatosUsuario.Credencial;
 import Alimentacion.Alimento;
 import Ejercitacion.Ejercicio;
-public class menuRepresentativo {
+import Ejercitacion.Rutina;
+public class menuAdmin {
 
-    public menuRepresentativo(){
+    public menuAdmin(){
         System.out.println("Bienvenido!");
         int opcion = -1;
         Scanner dato = new Scanner(System.in);
@@ -18,6 +21,8 @@ public class menuRepresentativo {
             System.out.println("3. Crear Alimento");
             System.out.println("4. Eliminar ejercicio");
             System.out.println("5. Mostrar Alimentos");
+            System.out.println("6. Modificar Ejercicio");
+            System.out.println("7. Checkear si rutina existe");
             System.out.println("0. Cerrar programa");
             System.out.println("Registre opcion deseada:");
             opcion = dato.nextInt();
@@ -84,7 +89,35 @@ public class menuRepresentativo {
                     }
                     Alimento.mostrarAlimentosDisponibles(alimentos);
                 }
+                case 6 -> {
+                    Ejercicio ejercicio = null;
+                    ejercicio = Ejercicio.obtenerEjercicio();
+                    ArrayList<Ejercicio> arr = null;
+                    try {
+                        arr = Ejercicio.leerEjerciciosDisponibles();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    try {
+                        Ejercicio.modificarEjercicio(arr,ejercicio);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    System.out.println("Ejercicio modificado correctamente");
 
+                }
+                case 7 ->{
+                    try {
+                        if(Rutina.existeRutina()){
+                            System.out.println("Rutina existe en archivo");
+                            System.out.println("Ubicado en: \\Recursos\\RecomendacionUsuario\\Rutina.txt");
+                        }
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+                }
                 default ->{
                 }
             }

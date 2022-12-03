@@ -70,6 +70,7 @@ public class MenuApp {
                 } catch (IOException ea) {
                     throw new RuntimeException(ea);
                 }
+                System.out.println("User y pass actualizadas correctamente");
             }
         });
 
