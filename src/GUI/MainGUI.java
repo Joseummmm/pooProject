@@ -60,7 +60,8 @@ public class MainGUI implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (userText.getText() == "admin" && new String(passwordText.getPassword()) == "admin"){
+        if (userText.getText().equals("admin") && new String(passwordText.getPassword()).equals("admin")){
+            frame.setVisible(false);
             new menuAdmin();
         }
         BotonLogin b = new BotonLogin(userText,passwordText,successLabel);
