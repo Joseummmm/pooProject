@@ -1,4 +1,4 @@
 existe:1
-ejercicios:Burpees-
+ejercicios:Sentadilla-
 TiempoEstimado:120
 Series:15
