@@ -18,6 +18,7 @@ public class MenuApp {
     private JButton buscarAlimentoButton;
     private JButton mostrarAlimentosButton;
     private JButton crearAlimentoButton;
+    private JButton MostrarEjerciciosEnRango;
     private JButton cerrarProgramaButton;
     private JFrame frame;
     private JPanel panel;
@@ -50,6 +51,9 @@ public class MenuApp {
         crearAlimentoButton = new JButton("Crear alimento");
         crearAlimentoButton.setBounds(120,60,80,25);
         panel.add(crearAlimentoButton);
+
+        MostrarEjerciciosEnRango = new JButton("Mostrar ejercicios en rango");
+        panel.add(MostrarEjerciciosEnRango);
 
         cerrarProgramaButton = new JButton("Cerrar programa");
         cerrarProgramaButton.setBounds(240,60,80,25);
@@ -179,6 +183,12 @@ public class MenuApp {
                 else{
                     System.out.println("Alimento no existe");
                 }
+            }
+        });
+        MostrarEjerciciosEnRango.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Ejercicio.imprimirEjercicioDentroDeRango();
             }
         });
     }

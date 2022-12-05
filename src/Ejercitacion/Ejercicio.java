@@ -178,4 +178,48 @@ public class Ejercicio {
         }
         reescribirEjerciciosDisponibles(ejercicios);
     }
+
+    public static void imprimirEjercicioDentroDeRango(){
+        Scanner scanner = new Scanner(System.in);
+        boolean catched;
+        int menor = -1;
+        int mayor = -1;
+        System.out.println("Ingrese rango menor");
+        do{
+            catched = false;
+
+            try{
+                menor = scanner.nextInt();
+            } catch (Exception e){
+                catched = true;
+                System.out.println("Dato Erroneo");
+                scanner.nextLine();
+            }
+        } while (catched == true);
+
+        System.out.println("Ingrese rango mayor");
+
+        do{
+            catched = false;
+            try{
+                mayor = scanner.nextInt();
+            } catch (Exception e){
+                catched = true;
+                System.out.println("Dato Erroneo");
+                scanner.nextLine();
+            }
+        } while (catched == true);
+
+        ArrayList<Ejercicio> array = null;
+        try {
+            array = leerEjerciciosDisponibles();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for(int i = 0; i < array.size(); i++){
+            if (array.get(i).getDuracionEstimada() > menor && array.get(i).getDuracionEstimada() < mayor){
+                System.out.println(array.get(i).getNombre());
+            }
+        }
+    }
 }

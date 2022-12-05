@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Credencial {
+public class Credencial implements MetodosCredencial{
     private String username;
     private String password;
 
