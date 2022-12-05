@@ -109,6 +109,18 @@ public class Rutina {
         rutinaDevolver.setEjercicios(ejerciciosEstablecer);
         rutinaDevolver.setTiempoEstimado(Integer.parseInt(atributos[1]));
         rutinaDevolver.setSeries(Integer.parseInt(atributos[2]));
+
         return rutinaDevolver;
+    }
+    public void imprimirRutina() {
+        System.out.println("----RUTINA----");
+        System.out.println("Tiempo estimado: " + tiempoEstimado);
+        for (Ejercicio ejercicio : getEjercicios()) {
+            System.out.println();
+            System.out.println("Nombre: " + ejercicio.getNombre());
+            System.out.println("Repeticiones: " + ejercicio.getRepeticiones());
+            System.out.println("Duracion estimada: " + ejercicio.getDuracionEstimada());
+            System.out.println("Calorias quemadas por minuto: " + ejercicio.getCaloriasQuemadasPorMinuto());
+        }
     }
 }

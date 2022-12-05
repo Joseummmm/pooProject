@@ -12,7 +12,6 @@ public class IniciosSesion {
         File archivoInicios = new File(filePath + "\\Recursos\\DatosUsuario\\IniciosSesion.csv");
         try (FileWriter writer = new FileWriter(archivoInicios, true);) {
             writer.write(fecha.toString() + ",");
-            System.out.println("escrito");
         } catch (FileNotFoundException e) {
             System.out.println("Archivo de registro de inicio de sesión no encontrado");
         }

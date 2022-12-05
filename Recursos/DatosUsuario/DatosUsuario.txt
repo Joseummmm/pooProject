@@ -1,9 +1,9 @@
 existe:1
 Nombre:jose
-Rut:20.562.313-2
+Rut:20562313-2
 FechaNacimiento:21/08/2002
-FechaIngreso:19/10/2022
+FechaIngreso:5/12/2022
 Edad:20
-IMC:17.50639
+IMC:21.707922
 Altura:1.69
-Peso:50.0
+Peso:62.0

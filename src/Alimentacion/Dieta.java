@@ -1,5 +1,7 @@
 package Alimentacion;
 
+import Ejercitacion.Ejercicio;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -103,10 +105,13 @@ public class Dieta {
         int cantLineas = 7;
         String[] atributos = new String[cantLineas-1]; //-1 para no contar el existe del inicio
         scannerDieta.nextLine();
+
         for (int i = 0; i < cantLineas && scannerDieta.hasNextLine(); i++) {
             atributos[i] = scannerDieta.nextLine().split(":")[1];
         }
+
         scannerDieta.close();
+
         for (String alimento : atributos[0].split("-")) {
             if (obtenerAlimentoPorNombre(alimento, alimentosDisponibles) != null) {
                 alimentosEstablecer.add(obtenerAlimentoPorNombre(alimento,alimentosDisponibles));
@@ -128,5 +133,18 @@ public class Dieta {
         }
         return null;
     }
-
+    public void imprimirDieta() {
+        System.out.println("----DIETA----");
+        System.out.println("Energia total: " + energiaTotal);
+        System.out.println("Proteina total: " + proteinaTotal);
+        System.out.println("Grasas totales: " + grasaTotal);
+        System.out.println("Azucares totales: " + azucarTotal);
+        System.out.println("Sodio total: " + sodioTotal);
+        for (Alimento alimento : getAlimentosDieta()) {
+            System.out.println();
+            System.out.println("Nombre: " + alimento.getNombre());
+            System.out.println("Tipo: " + alimento.getTipo());
+            System.out.println("Cantidad por porcion: " + alimento.getCantidadEnGramos() + " gramos");
+        }
+    }
 }

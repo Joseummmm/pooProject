@@ -20,4 +20,11 @@ public class EstadoFisico extends Estado{
     public void setIMC(float IMC) {
         this.IMC = IMC;
     }
+
+    //metodo
+    public void imprimirEstadoFisico() {
+        System.out.println(super.getPeso());
+        System.out.println(super.getAltura());
+        System.out.println(getIMC());
+    }
 }

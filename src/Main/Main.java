@@ -17,13 +17,10 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
         ArrayList<Alimento> alimentosDisponibles = Alimento.leerAlimentosDisponibles();
         ArrayList<Ejercicio> ejerciciosDisponibles = Ejercicio.leerEjerciciosDisponibles();
         Usuario usuario;
         IniciosSesion.registrarInicioSesion(new Date());
-        //GUI DE INICIO ANTES DE ifs
-        new MainGUI();
 
         //establecer datos del objeto usuario dependiendo de si ya existe o no
         if (Usuario.existeUsuario()) {
@@ -33,10 +30,13 @@ public class Main {
         }
         else {
             usuario = Usuario.obtenerUsuario();
-            Usuario.escribirDatosUsuario(usuario);
-            Dieta.escribirDieta(recomendarDieta(alimentosDisponibles));
             Rutina.escribirRutina(recomendarRutina(ejerciciosDisponibles,usuario.getEstadoFisico()));
+            Dieta.escribirDieta(recomendarDieta(alimentosDisponibles));
+            Usuario.escribirDatosUsuario(usuario);
         }
+
+        //GUI DE INICIO ANTES DE ifs
+        new MainGUI();
 
     }
 
@@ -58,14 +58,14 @@ public class Main {
     public static Rutina recomendarRutina(ArrayList<Ejercicio> ejerciciosDisponibles, EstadoFisico estadoUsuario) {
         Random randomizer = new Random();
         ArrayList<Ejercicio> ejerciciosRutina = new ArrayList<>();
-        float pesoIdeal = estadoUsuario.getIMC() * (estadoUsuario.getAltura() * estadoUsuario.getAltura());
+        float pesoIdeal = Math.round(21.7 * (estadoUsuario.getAltura() * estadoUsuario.getAltura()));
         int randomIndex, duracionTotal = 0;
         //dos casos, uno se calcula para ganar músculo y el otro para perder grasa
         //ganar musculatura, se arma una rutina según lo recomendado, solo 3500 (500 diarias) semanales por cuatro semanas
         //perder grasa (3500 calorías semanales por kilo), plan de cuatro semanas
-        int caloriasQuemar = pesoIdeal >= estadoUsuario.getPeso() ? 500 :
+        int caloriasQuemar = pesoIdeal >= estadoUsuario.getPeso() ? 1000 :
                 (int) (Math.floor(estadoUsuario.getPeso() - pesoIdeal) / 4) * 500;
-        while (caloriasQuemar > 0) {
+        while (caloriasQuemar >= 0) {
             randomIndex = randomizer.nextInt(0,ejerciciosDisponibles.size());
             ejerciciosRutina.add(ejerciciosDisponibles.get(randomIndex));
             caloriasQuemar -= ejerciciosDisponibles.get(randomIndex).getCaloriasQuemadasPorMinuto() *
