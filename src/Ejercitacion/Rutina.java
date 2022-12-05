@@ -114,13 +114,16 @@ public class Rutina{
     }
     public void imprimirRutina() {
         System.out.println("----RUTINA----");
-        System.out.println("Tiempo estimado: " + tiempoEstimado);
+        int tiempo = 0;
         for (Ejercicio ejercicio : getEjercicios()) {
             System.out.println();
             System.out.println("Nombre: " + ejercicio.getNombre());
             System.out.println("Repeticiones: " + ejercicio.getRepeticiones());
             System.out.println("Duracion estimada: " + ejercicio.getDuracionEstimada());
+            tiempo = tiempo + ejercicio.getDuracionEstimada();
             System.out.println("Calorias quemadas por minuto: " + ejercicio.getCaloriasQuemadasPorMinuto());
         }
+        System.out.println();
+        System.out.println("Tiempo estimado total: " + tiempo);
     }
 }

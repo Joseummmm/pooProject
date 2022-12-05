@@ -1,8 +1,10 @@
 package GUI;
 
 import Alimentacion.Alimento;
+import Alimentacion.Dieta;
 import DatosUsuario.Credencial;
 import Ejercitacion.Ejercicio;
+import Ejercitacion.Rutina;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,12 +16,12 @@ import java.util.Scanner;
 
 public class MenuApp {
     private JButton nuevoUserYPass;
-    private JButton eliminarEjercicioButton;
     private JButton buscarAlimentoButton;
     private JButton mostrarAlimentosButton;
-    private JButton crearAlimentoButton;
     private JButton MostrarEjerciciosEnRango;
     private JButton cerrarProgramaButton;
+    private JButton mostrarDieta;
+    private JButton mostrarRutina;
     private JFrame frame;
     private JPanel panel;
     public MenuApp() {
@@ -36,9 +38,6 @@ public class MenuApp {
         nuevoUserYPass.setBounds(20,20,80,25);
         panel.add(nuevoUserYPass);
 
-        eliminarEjercicioButton = new JButton("Eliminar Ejercicio");
-        eliminarEjercicioButton.setBounds(120,20,80,25);
-        panel.add(eliminarEjercicioButton);
 
         buscarAlimentoButton = new JButton("buscar alimento");
         buscarAlimentoButton.setBounds(240,20,80,25);
@@ -48,19 +47,50 @@ public class MenuApp {
         mostrarAlimentosButton.setBounds(20,60,80,25);
         panel.add(mostrarAlimentosButton);
 
-        crearAlimentoButton = new JButton("Crear alimento");
-        crearAlimentoButton.setBounds(120,60,80,25);
-        panel.add(crearAlimentoButton);
 
         MostrarEjerciciosEnRango = new JButton("Mostrar ejercicios en rango");
         panel.add(MostrarEjerciciosEnRango);
+
+        mostrarDieta = new JButton("Mostrar Dieta");
+        panel.add(mostrarDieta);
+
+        mostrarRutina = new JButton("Mostrar Rutina");
+        panel.add(mostrarRutina);
 
         cerrarProgramaButton = new JButton("Cerrar programa");
         cerrarProgramaButton.setBounds(240,60,80,25);
         panel.add(cerrarProgramaButton);
 
+
         frame.setVisible(true);
 
+        mostrarRutina.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Ejercicio> array = null;
+                try {
+                    array = Ejercicio.leerEjerciciosDisponibles();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Rutina rutina = new Rutina();
+                rutina.setEjercicios(array);
+                rutina.imprimirRutina();
+            }
+        });
+        mostrarDieta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Alimento> alimentos = null;
+                try {
+                    alimentos = Alimento.leerAlimentosDisponibles();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Dieta dieta = new Dieta(alimentos);
+                dieta.imprimirDieta();
+            }
+        });
         nuevoUserYPass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,67 +108,7 @@ public class MenuApp {
             }
         });
 
-        eliminarEjercicioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Scanner dato = new Scanner(System.in);
-                System.out.println("Ingrese nombre ejercicio:");
-                String nombre = dato.next();
-                System.out.println("Ingrese repeticiones ejercicio:");
 
-                boolean catched = false;
-                int repeticiones = -1;
-                do{
-                    catched = false;
-                    dato.nextLine();
-                    try {
-                        repeticiones = dato.nextInt();
-                    }catch (Exception po){
-                        System.out.println("Formato incorrecto");
-                        catched = true;
-                    }
-                } while (!catched);
-
-                int duracionEstimada = -1;
-                do{
-                    catched = false;
-                    dato.nextLine();
-                    try {
-                        duracionEstimada = dato.nextInt();
-                    }catch (Exception po){
-                        System.out.println("Formato incorrecto");
-                        catched = true;
-                    }
-                } while (!catched);
-
-                float calorias = -1;
-                do{
-                    catched = false;
-                    dato.nextLine();
-                    try {
-                        calorias = dato.nextInt();
-                    }catch (Exception po){
-                        System.out.println("Formato incorrecto");
-                        catched = true;
-                    }
-                } while (!catched);
-
-                Ejercicio ejercicio = new Ejercicio(nombre,repeticiones,duracionEstimada,calorias);
-
-                ArrayList<Ejercicio> ejercicios = null;
-                try {
-                    ejercicios = Ejercicio.leerEjerciciosDisponibles();
-                } catch (FileNotFoundException a) {
-                    throw new RuntimeException(a);
-                }
-
-                try {
-                    Ejercicio.eliminarEjerciciosDisponible(ejercicios,ejercicio);
-                } catch (IOException a) {
-                    throw new RuntimeException(a);
-                }
-            }
-        });
         mostrarAlimentosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -151,12 +121,7 @@ public class MenuApp {
                 Alimento.mostrarAlimentosDisponibles(alimentos);
             }
         });
-        crearAlimentoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Alimento.obtenerAlimento();
-            }
-        });
+
         cerrarProgramaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -118,10 +118,14 @@ public class menuAdmin {
 
 
                 }
+                case 0 ->{
+                    System.out.println("Adios :)");
+                    System.exit(0);
+                }
                 default ->{
                 }
             }
         }
-        System.out.println("Adios :)");
+
     }
 }
